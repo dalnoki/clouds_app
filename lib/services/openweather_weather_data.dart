@@ -12,14 +12,13 @@ class Daily {
 }
 
 class Hourly {
-  // TODO change dynamic
-  dynamic dt; // Timestamp (Unix time, UTC time zone)
-  dynamic temp;
-  dynamic feelsLike; // Changed from dynamic to double for type safety
+  int dt; // Timestamp (Unix time, UTC time zone)
+  dynamic temp; // sometimes int, sometimes double
+  dynamic feelsLike; // sometimes int, sometimes double
   int clouds; //Cloudiness, %
-  dynamic visibility; // Average visibility in metres, max 10 km
+  int visibility; // Average visibility in metres, max 10 km
   List<Weather>? weather;
-  dynamic pop; // Probability of precipitation, between 0 and 1
+  double pop; // Probability of precipitation, between 0 and 1
 
   Hourly({
     required this.dt,

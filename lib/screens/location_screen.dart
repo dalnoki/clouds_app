@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:clouds_app/services/location.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:clouds_app/services/networking.dart';
-
 import '../services/env.dart';
 
 class LocationScreen extends StatefulWidget {
@@ -20,8 +19,7 @@ class _LocationScreenState extends State<LocationScreen> {
   late String cityName;
 
   void getCityInformation() async {
- // todo: link openweather docs
- // todo: remove dynamic where possible
+ // https://openweathermap.org/api/geocoding-api
     NetworkHelper requestData = NetworkHelper(url: "http://api.openweathermap.org/geo/1.0/direct?q=$cityName&limit=5&appid=${Env.openWeatherApiKey}");
     List<dynamic> openweatherLocationData = await requestData.getLocationData();
     List<CityLocation> cityInformation = requestData.getLocation(openweatherLocationData);

@@ -4,6 +4,7 @@ import 'package:clouds_app/services/location.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:clouds_app/services/networking.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:clouds_app/services/openweather_weather_data.dart';
 
 import '../services/env.dart';
 
@@ -33,7 +34,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
   void getWeatherData() async {
     NetworkHelper requestData = NetworkHelper(url: "https://api.openweathermap.org/data/3.0/onecall?lat=${latitude}&lon=${longitude}&exclude=current,minutely&appid=${Env.openWeatherApiKey}&units=metric");
     Map<String, dynamic> openweatherWeatherData = await requestData.getWeatherData();
-    dynamic hourlyData = requestData.getHourlyData(openweatherWeatherData);
+    List<dynamic> hourlyData = requestData.getHourlyData(openweatherWeatherData);
     dynamic dailyData = requestData.getDailyData(openweatherWeatherData);
 
     Navigator.push(context, MaterialPageRoute(builder: (context) {

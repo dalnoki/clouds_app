@@ -26,7 +26,6 @@ class NetworkHelper {
       throw Exception("The GET request didn't succeed.");
     }
     final decodedJson = json.decode(httpResponse.body);
-    print(decodedJson.runtimeType);
     return decodedJson;
   }
 
@@ -40,7 +39,7 @@ class NetworkHelper {
     return dailyData;
   }
 
-  dynamic getLocation(List<dynamic> json) {
+  List<CityLocation> getLocation(List<dynamic> json) {
     final locationData = json.map((data) => CityLocation.fromJson(data)).toList();
     return locationData;
   }

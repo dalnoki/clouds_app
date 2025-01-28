@@ -27,11 +27,11 @@ class Location {
         return position;
       } catch (e) {
         pop();
-        throw PermissionDeniedException("Permission denied");
+        throw const PermissionDeniedException("Permission denied");
       }
 
     }
     pop();
-    throw PermissionDeniedException("Permission denied");
+    throw const PermissionDeniedException("Permission denied");
   }
 }
